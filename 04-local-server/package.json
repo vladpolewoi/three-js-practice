@@ -1,0 +1,17 @@
+{
+	"name": "threejs-journey-exercise",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "bunx --bun vite",
+		"build": "bunx --bun vite build",
+		"serve": "bunx --bun vite preview"
+	},
+	"devDependencies": {
+		"vite": "^4.3.9"
+	},
+	"dependencies": {
+		"three": "^0.153.0"
+	}
+}

@@ -1,6 +1,11 @@
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import gsap from "gsap"
+import * as lil from "lil-gui"
+
+// TASK 1: Add debugger from ui
+// Debug
+const gui = new lil.GUI()
 
 /**
  * Base
@@ -18,6 +23,27 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0x2cff99 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+// TASK 2: Add tweaks to debugger
+gui.add(mesh.position, "y", -3, 3, 0.01)
+// range
+gui.add(mesh.position, "x").min(-3).max(3).step(0.01).name("ecks")
+gui.add(mesh, "visible")
+// boolean
+gui.add(material, "wireframe")
+// colors
+gui.addColor(material, "color")
+
+// add functions and buttons
+const parameters = {
+	spin: () => {
+		gsap.to(mesh.rotation, {
+			duration: 1,
+			y: mesh.rotation.y + Math.PI * 2,
+		})
+	},
+}
+gui.add(parameters, "spin")
 
 /**
  * Sizes
